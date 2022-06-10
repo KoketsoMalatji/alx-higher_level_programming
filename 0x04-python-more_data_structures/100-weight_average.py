@@ -1,9 +1,14 @@
-def weight_average(my_list=[]):
-    score = 0
-    weight = 0
-    if not my_list:
-        return 0
+#!/usr/bin/python3
 
-    for j in my_list:
-        score += j[0] * j[1]
-        weight += j[1]
+
+def weight_average(my_list=[]):
+    """Return all list of tuples."""
+    if not isinstance(my_list, list) or len(my_list) == 0:
+        return (0)
+
+    avg = 0
+    size = 0
+    for tup in my_list:
+        avg += (tup[0] * tup[1])
+        size += tup[1]
+    return (avg / size)
