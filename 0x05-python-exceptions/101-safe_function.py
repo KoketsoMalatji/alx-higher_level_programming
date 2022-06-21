@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-def safe_print_list(my_list=[], x=0):
-    none = 0
-    for i in range(x):
-        try:
-            print(my_list[i], end='')
-            none += 1
-        except IndexError:
-            break
-    print('')
-    return none
+import sys
+
+
+def safe_function(fct, *args):
+    try:
+        return fct(*args)
+    except Exception as code:
+        print("Exception: {}".format(code), file=sys.stderr)
+        return None
