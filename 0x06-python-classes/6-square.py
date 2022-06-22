@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 class Square:
-    """Define a Class Square"""
+    """Define a square"""
     def __init__(self, __size=0, position=(0, 0)):
         self.__size = __size
         self.position = position
@@ -26,7 +26,6 @@ class Square:
 
     @property
     def position(self):
-        """Print the square"""
         return self.__position
 
     @position.setter
