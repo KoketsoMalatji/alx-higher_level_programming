@@ -1,12 +1,9 @@
 #!/usr/bin/python3
-'''module for 1-my_list'''
+"""My module for 1-my_list"""
 
 
 class MyList(list):
-    """class utilizing list class"""
-
+    """MyList, inherits from list"""
     def print_sorted(self):
-        """print sorted list"""
-        res = list.copy(self)
-        list.sort(res)
-        print(res)
+        """print sorted list method"""
+        print(sorted(self))
