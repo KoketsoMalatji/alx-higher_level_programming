@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''module for 1-my_list.py'''
+'''module for 1-my_list'''
 
 
 class MyList(list):
-    """Defining list class"""
+    """class utilizing list class"""
 
     def print_sorted(self):
         """print sorted list"""
