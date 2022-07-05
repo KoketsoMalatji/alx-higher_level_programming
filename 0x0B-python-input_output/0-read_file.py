@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-def read_file(filename=""):
-    """function that reads a text file and prints it"""
+"""module for read_file"""
 
-    with open(filename) as f:
-        text = f.read()
+
+def read_file(filename=""):
+    """read from a file"""
+    with open(filename, "r", encoding="utf-8") as content:
+        text = content.read()
         print(text, end="")
