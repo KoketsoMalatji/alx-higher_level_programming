@@ -1,16 +1,20 @@
 #!/usr/bin/python3
-"""module for 7-base_geometry"""
+'''Module for 7-base_geometry'''
 
 
 class BaseGeometry:
-    """BaseGeometry class"""
+    '''BaseGeomentry empty class'''
+    def __init__(self):
+        '''empty init'''
+        pass
+
     def area(self):
-        """method to calculate area"""
+        '''stupid function'''
         raise Exception('area() is not implemented')
 
     def integer_validator(self, name, value):
-        """method to validate value"""
-        if type(value) != int:
-            raise TypeError('{} must be an integer'.format(name))
+        '''another useless function'''
+        if type(value) is not int:
+            raise TypeError(f'{name} must be an integer')
         if value <= 0:
-            raise ValueError('{} must be greater than 0'.format(name))
+            raise ValueError(f'{name} must be greater than 0')
