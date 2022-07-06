@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-from sys import argv
-save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
+'''module for add item'''
 
 
-list1 = []
+import sys
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+
+arglist = list(sys.argv[1:])
 
 try:
-    list1 = list(load_from_json_file("add_item.json"))
+    old_data = load_from_json_file('add_item.json')
+except Exception:
+    old_data = []
 
-except:
-    old_data(list1) == 0
-
-for arg in range(1, old_data(argv)):
-    list1.append(argv[arg])
-
-save_to_json_file(list1, "add_item.json")
+old_data.extend(arglist)
+save_to_json_file(old_data, 'add_item.json')
