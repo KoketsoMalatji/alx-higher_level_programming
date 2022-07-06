@@ -1,12 +1,19 @@
 #!/usr/bin/python3
-'''module for mylist'''
+"""
+A module to prints a list
+"""
 
 
 class MyList(list):
-    """class utilizing list class"""
+    """
+    A class to customize the list class
+    """
 
     def print_sorted(self):
-        """print sorted list"""
-        res = list.copy(self)
-        list.sort(res)
-        print(res)
+        """
+        Prints a list in ascending order
+        Sort a list and then prints on the output
+        """
+
+        if issubclass(MyList, list):
+            print(sorted(self))
