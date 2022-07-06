@@ -1,15 +1,10 @@
 #!/usr/bin/python3
-import random
-import sys
-from time import sleep
-import datetime
+'''module for stats'''
 
-for i in range(10000):
-    sleep(random.random())
-    sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
-        random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
-        datetime.datetime.now(),
-        random.choice([200, 301, 400, 401, 403, 404, 405, 500]),
-        random.randint(1, 1024)
-    ))
-    sys.stdout.flush()
+
+def add_attribute(object, name, value):
+    '''this function adds new attr to the obj if possible'''
+    if '__dict__' in dir(object):
+        object.__dict__[name] = value
+    else:
+        raise TypeError("can't add new attribute")
