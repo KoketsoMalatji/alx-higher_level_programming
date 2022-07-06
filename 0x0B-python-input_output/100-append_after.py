@@ -1,17 +1,15 @@
 #!/usr/bin/python3
-"""module for append_after"""
-
-
 def append_after(filename="", search_string="", new_string=""):
-    """insert text after search string."""
-    lines = []
-    with open(filename, "r", encoding="utf-8") as content:
-        line = content.readlines()
-        i = 0
-        while i < len(line):
-            if search_string in getline[i]:
-                line[i:i + 1] = [line[i], new_string]
-                i += 1
-            i += 1
-    with open(filename, "w", encoding="utf-8") as content:
-        content.writelines(line)
+    with open(filename, mode='r', encoding='utf-8') as f:
+        text = f.readlines()
+        new_t = []
+
+        for line in text:
+            new_t.append(line)
+
+            if search_string in line:
+                new_t.append(new_string)
+
+    with open(filename, mode='w', encoding='utf-8') as nf:
+        for line in new_t:
+            nf.write(line)
