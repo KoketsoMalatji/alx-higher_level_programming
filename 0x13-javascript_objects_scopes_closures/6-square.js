@@ -2,18 +2,17 @@
 
 // Print function with custom characters
 
-const OldSquare = require('./5-square');
+const squareFive = require('./5-square.js');
 
-module.exports = class Square extends OldSquare {
-  constructor (size) {
-    super(size, size);
+class Square extends squareFive {
+  charPrint (c) {
+    if (c === undefined) {
+      c = 'X';
+    }
+    let ct;
+    for (ct = 0; ct < this.height; ct++) {
+      console.log(c.repeat(this.width));
+    }
   }
-
-  double () {
-    super.double();
-  }
-
-  charPrint (c = 'X') {
-    super.print(c);
-  }
-};
+}
+module.exports = Square;
