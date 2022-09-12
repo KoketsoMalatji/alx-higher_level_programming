@@ -1,21 +1,25 @@
 #!/usr/bin/python3
-"""script that takes in the name of a state as an argument and lists all cities of that state"""
-
+""" Script that takes in the name of a state as an argument
+and lists all cities of that state"""
 import MySQLdb
-from sys import argv
+import sys
 
-if __name__ == "__main__":
-    conn = MySQLdb.connect(host="localhost", port=3306, charset="utf8",
-                           user=argv[1], passwd=argv[2], db=argv[3])
-    cur = conn.cursor()
-    cur.execute("""
-        SELECT cities.id, cities.name, states.name FROM cities
-        LEFT JOIN states ON cities.state_id = states.id
-        WHERE states.name = %s
-        ORDER BY cities.id ASC;
-        """, (argv[4],))
-    cities = cur.fetchall()
-    cities = [city[1] for city in cities]
-    print(", ".join(cities))
-    cur.close()
-    conn.close()
+if __name__ == '__main__':
+
+    mysql_c = MySQLdb.connect(
+        user=sys.argv[1],
+        password=sys.argv[2],
+        database=sys.argv[3],
+        host="localhost",
+        port=3306)
+
+    i = mysql_c.cursor()
+    i.execute("""SELECT cities.name
+                 FROM cities INNER JOIN states
+                 ON states.id=cities.state_id
+                 WHERE states.name=%s""", (sys.argv[4],))
+    rows = i.fetchall()
+    arr = list(row[0] for row in rows)
+    print(*arr, sep=", ")
+    i.close()
+    mysql_c.close()
