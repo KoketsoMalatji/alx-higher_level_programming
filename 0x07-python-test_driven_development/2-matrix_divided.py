@@ -1,36 +1,23 @@
 #!/usr/bin/python3
-"""Module function to divide 2 matrix """
-
-
 def matrix_divided(matrix, div):
-    '''This function devides all elements of a matrix
-    args:
-        matrix (list): list of lists of integers/floats
-        div (int): integer or float
-    returns:
-        a new matrix
-    '''
-    if type(div) is not int and type(div) is not float:
-        raise TypeError('div must be a number')
-    elif div == 0:
-        raise ZeroDivisionError('division by zero')
-
-    fst_lst_len = len(matrix[0])
-    matrix_div = list()
-
-    for lst in matrix:
-        if len(lst) != fst_lst_len:
-            raise TypeError('Each row of the matrix must have the same size')
-
-        new_list = list()
-
-        for e in lst:
-            if type(e) is not int and type(e) is not float:
-                raise TypeError(
-                    'matrix must be a matrix(list of lists) of integers/floats'
-                    )
-            new_list.append(round(e / div, 2))
-
-        matrix_div.append(new_list)
-
-    return matrix_div
+    errorMessage = "matrix must be a matrix list of integers/floats"
+    if not matrix:
+        raise TypeError(errorMessage)
+    if not isinstance(matrix, list):
+        raise TypeError(errorMessage)
+    for lists in matrix:
+        if not isinstance(lists, list):
+            raise TypeError(errorMessage)
+        for item in lists:
+            if not isinstance(item, int) and not isinstance(item, float):
+                raise TypeError(errorMessage)
+    for lists in matrix:
+        if len(lists) == 0:
+            raise TypeError(errorMessage)
+    if not isinstance(div, int) and not isinstance(div, float):
+        raise TypeError("div must be a number")
+    if not all(len(lists) == len(matrix[0]) for lists in matrix):
+        raise TypeError("Each row of the matrix must have the same size")
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+    return [[round(item / div, 2) for item in lists] for lists in matrix]
