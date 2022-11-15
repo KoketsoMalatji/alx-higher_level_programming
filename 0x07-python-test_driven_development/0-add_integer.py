@@ -1,22 +1,19 @@
-"""Module containing simple function to add together two integers"""
+#!/usr/bin/python3
+"""
+This is the addition module
+"""
 
 
 def add_integer(a, b=98):
-    """"This function does the addition of 2 arguments
-    args:
-        a (union[int, float]): first number
-        b (union[int, float], optional): second number
-    returns:
-        the result of the addition
+    """a and are integers
+    Returns an integer: the addition of a and b
     """
-    if type(a) is not int and type(a) is not float:
-        raise TypeError('a must be an integer')
-    if type(b) is not int and type(b) is not float:
-        raise TypeError('b must be an integer')
-
-    if type(a) is float:
+    if isinstance(a, float):
         a = int(a)
-    if type(b) is float:
+    if isinstance(b, float):
         b = int(b)
-
-    return a + b
+    if not (isinstance(a, int)):
+        raise TypeError("a must be an integer")
+    if not (isinstance(b, int)):
+        raise TypeError("b must be an integer")
+    return (a + b)
